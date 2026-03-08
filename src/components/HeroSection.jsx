@@ -161,8 +161,9 @@ function TrustComparison() {
 }
 
 export default function HeroSection() {
-  const { telegramLink, heroVariant } = useConfig()
+  const { telegramLink, heroVariant, voteAmount } = useConfig()
   const variant = HERO_VARIANTS[heroVariant] || HERO_VARIANTS[1]
+  const fmtAmount = Number(voteAmount).toLocaleString('ru-RU')
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
@@ -175,6 +176,28 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
+
+            {/* ── REWARD BADGE ── */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={-1}
+              className="inline-flex items-center gap-4 mb-8 bg-brand-green/8 dark:bg-brand-green/10 border border-brand-green/30 rounded-2xl px-5 py-4"
+              style={{ boxShadow: '0 0 32px rgba(34,197,94,0.15)' }}
+            >
+              <div className="flex flex-col items-center justify-center bg-brand-green/20 rounded-xl w-14 h-14 flex-shrink-0">
+                <FaCoins className="w-6 h-6 text-brand-green dark:text-brand-neon mb-0.5" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-widest mb-0.5">Har 1 ovoz uchun</p>
+                <p className="text-4xl sm:text-5xl font-black text-brand-green dark:text-brand-neon leading-none">
+                  {fmtAmount}
+                  <span className="text-xl font-bold ml-1.5 text-brand-green/70 dark:text-brand-neon/70">so'm</span>
+                </p>
+              </div>
+            </motion.div>
+
             <motion.h1
               variants={fadeUp}
               initial="hidden"
