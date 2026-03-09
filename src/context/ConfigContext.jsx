@@ -11,10 +11,10 @@ const DEFAULT = {
   telegramLink: 'https://t.me/ncrmdbbot',
   heroVariant: 1,
   stats: {
-    votesCount: 24817,
-    totalPaid: '117350000',
-    participantsCount: 9243,
-    successRate: 97,
+    votesCount: 0,
+    totalPaid: '0',
+    participantsCount: 0,
+    successRate: 0,
   },
 }
 

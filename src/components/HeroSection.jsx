@@ -162,8 +162,14 @@ function TrustComparison() {
 
 export default function HeroSection() {
   const { telegramLink, heroVariant, voteAmount } = useConfig()
-  const variant = HERO_VARIANTS[heroVariant] || HERO_VARIANTS[1]
   const fmtAmount = Number(voteAmount).toLocaleString('ru-RU')
+  const baseVariant = HERO_VARIANTS[heroVariant] || HERO_VARIANTS[1]
+  const variant = {
+    ...baseVariant,
+    headline: heroVariant === 2
+      ? `Har bitta ovoz\nuchun ${fmtAmount} so'm!`
+      : baseVariant.headline,
+  }
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
@@ -217,45 +223,17 @@ export default function HeroSection() {
               initial="hidden"
               animate="visible"
               custom={1}
-              className="text-xl text-gray-500 dark:text-slate-400 mb-8 leading-relaxed"
+              className="text-xl text-gray-500 dark:text-slate-400 mb-6 leading-relaxed"
             >
               {variant.subheadline}
             </motion.p>
-
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={2} className="mb-8">
-              <TrustComparison />
-            </motion.div>
-
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={3}
-              className="text-gray-500 dark:text-slate-400 mb-6 flex items-center gap-2"
-            >
-              <FaArrowDown className="w-4 h-4 text-brand-green animate-bounce" />
-              {variant.extra}
-            </motion.p>
-
-            {variant.bonus && (
-              <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                custom={3.5}
-                className="inline-flex items-center gap-2 bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-sm font-medium px-4 py-2 rounded-full mb-6"
-              >
-                <FaCoins className="w-4 h-4" />
-                {variant.bonus}
-              </motion.div>
-            )}
 
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              custom={4}
-              className="flex flex-col sm:flex-row gap-3"
+              custom={2}
+              className="flex flex-col sm:flex-row gap-3 mb-8"
             >
               <a
                 href={telegramLink}
@@ -273,6 +251,34 @@ export default function HeroSection() {
                 </a>
               )}
             </motion.div>
+
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="mb-6">
+              <TrustComparison />
+            </motion.div>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={4}
+              className="text-gray-500 dark:text-slate-400 mb-4 flex items-center gap-2"
+            >
+              <FaArrowDown className="w-4 h-4 text-brand-green animate-bounce" />
+              {variant.extra}
+            </motion.p>
+
+            {variant.bonus && (
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                custom={4.5}
+                className="inline-flex items-center gap-2 bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-sm font-medium px-4 py-2 rounded-full mb-4"
+              >
+                <FaCoins className="w-4 h-4" />
+                {variant.bonus}
+              </motion.div>
+            )}
 
             <motion.div
               variants={fadeUp}

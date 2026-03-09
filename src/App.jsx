@@ -1,4 +1,3 @@
-import { ThemeProvider, useTheme } from './context/ThemeContext'
 import { ConfigProvider } from './context/ConfigContext'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -8,12 +7,12 @@ import RewardsSection from './components/RewardsSection'
 import FaqSection from './components/FaqSection'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
+import StickyBottomCTA from './components/StickyBottomCTA'
 
-function AppInner() {
-  const { dark } = useTheme()
+export default function App() {
   return (
-    <div className={dark ? 'dark' : ''}>
-      <div className="min-h-screen bg-gray-50 dark:bg-dark-950 text-gray-900 dark:text-white overflow-x-hidden transition-colors duration-300">
+    <ConfigProvider>
+      <div className="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden pb-[72px] sm:pb-0">
         <Navbar />
         <HeroSection />
         <StatsSection />
@@ -22,17 +21,8 @@ function AppInner() {
         <FaqSection />
         <FinalCTA />
         <Footer />
+        <StickyBottomCTA />
       </div>
-    </div>
-  )
-}
-
-export default function App() {
-  return (
-    <ThemeProvider>
-      <ConfigProvider>
-        <AppInner />
-      </ConfigProvider>
-    </ThemeProvider>
+    </ConfigProvider>
   )
 }
