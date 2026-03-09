@@ -9,13 +9,15 @@ function apiFetch(path, token, options = {}) {
   })
 }
 
+const inputCls = 'w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-green-400'
+const labelCls = 'block text-xs font-semibold text-gray-600 mb-1.5'
+
 export default function AdminPanel({ token, onLogout }) {
   const [page, setPage] = useState('settings')
+  const [menuOpen, setMenuOpen] = useState(false)
   const [settings, setSettings] = useState(null)
   const [saving, setSaving] = useState(false)
   const [saveMsg, setSaveMsg] = useState('')
-
-  // Password change
   const [oldPw, setOldPw] = useState('')
   const [newPw, setNewPw] = useState('')
   const [pwMsg, setPwMsg] = useState('')
@@ -48,7 +50,7 @@ export default function AdminPanel({ token, onLogout }) {
       method: 'PATCH',
       body: JSON.stringify({ oldPassword: oldPw, newPassword: newPw }),
     })
-    if (res.ok) { setPwMsg('Parol o\'zgartirildi'); setOldPw(''); setNewPw('') }
+    if (res.ok) { setPwMsg("Parol o'zgartirildi"); setOldPw(''); setNewPw('') }
     else setPwMsg('Xato: eski parol noto\'g\'ri')
   }
 
@@ -57,87 +59,113 @@ export default function AdminPanel({ token, onLogout }) {
     { id: 'password', label: 'Parol' },
   ]
 
+  function navigate(id) { setPage(id); setMenuOpen(false) }
+
   return (
-    <div style={{ minHeight: '100vh', background: '#f1f5f9', display: 'flex' }}>
-      {/* Sidebar */}
-      <div style={{ width: 220, background: '#fff', borderRight: '1px solid #e5e7eb', padding: '24px 0', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '0 20px 24px', borderBottom: '1px solid #f1f5f9' }}>
-          <div style={{ fontWeight: 700, fontSize: 17, color: '#0f172a' }}>Admin Panel</div>
-          <div style={{ fontSize: 12, color: '#94a3b8', marginTop: 2 }}>OpenBudget</div>
-        </div>
-        <nav style={{ flex: 1, padding: '16px 12px' }}>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Top navbar (mobile) */}
+      <div className="bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between md:hidden">
+        <span className="font-bold text-gray-900">Admin Panel</span>
+        <button onClick={() => setMenuOpen(o => !o)} className="p-2 rounded-lg hover:bg-gray-100">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            {menuOpen ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/> : <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/>}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile dropdown menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-b border-gray-200 px-4 pb-3">
           {nav.map(n => (
-            <button key={n.id} onClick={() => setPage(n.id)} style={{
-              display: 'block', width: '100%', textAlign: 'left', padding: '10px 12px',
-              borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 500,
-              background: page === n.id ? '#f0fdf4' : 'transparent',
-              color: page === n.id ? '#16a34a' : '#374151',
-              marginBottom: 4,
-            }}>{n.label}</button>
+            <button key={n.id} onClick={() => navigate(n.id)}
+              className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium mb-1 ${page === n.id ? 'bg-green-50 text-green-700' : 'text-gray-700 hover:bg-gray-50'}`}>
+              {n.label}
+            </button>
           ))}
-        </nav>
-        <div style={{ padding: '16px 12px' }}>
-          <button onClick={onLogout} style={{ width: '100%', padding: '9px', border: '1px solid #e5e7eb', borderRadius: 8, background: '#fff', color: '#64748b', fontSize: 13, cursor: 'pointer' }}>
+          <button onClick={onLogout} className="block w-full text-left px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:bg-gray-50">
             Chiqish
           </button>
         </div>
-      </div>
+      )}
 
-      {/* Content */}
-      <div style={{ flex: 1, padding: '32px 36px', maxWidth: 700 }}>
-        {page === 'settings' && settings && (
-          <div>
-            <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 24, color: '#0f172a' }}>Sozlamalar</h2>
-            <div style={{ background: '#fff', borderRadius: 12, padding: 28, boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-              {[
-                { label: 'Ovoz narxi (so\'m)', key: 'voteAmount', type: 'number' },
-                { label: 'Bonus miqdori (so\'m)', key: 'bonusAmount', type: 'number' },
-                { label: 'Bonus uchun min. ovoz', key: 'bonusMinVotes', type: 'number' },
-                { label: 'Grand sovrin', key: 'grandPrize', type: 'text' },
-                { label: 'Telegram link', key: 'telegramLink', type: 'url' },
-                { label: 'Hero variant (1 yoki 2)', key: 'heroVariant', type: 'number' },
-              ].map(f => (
-                <div key={f.key} style={{ marginBottom: 18 }}>
-                  <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 6, color: '#374151' }}>{f.label}</label>
-                  <input
-                    type={f.type}
-                    value={settings[f.key] ?? ''}
-                    onChange={e => setSettings(s => ({ ...s, [f.key]: e.target.value }))}
-                    style={{ width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: 8, fontSize: 14, boxSizing: 'border-box' }}
-                  />
-                </div>
-              ))}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 8 }}>
-                <button onClick={saveSettings} disabled={saving} style={{ padding: '10px 28px', background: '#22c55e', color: '#fff', border: 'none', borderRadius: 8, fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
-                  {saving ? 'Saqlanmoqda...' : 'Saqlash'}
-                </button>
-                {saveMsg && <span style={{ color: '#16a34a', fontSize: 14 }}>{saveMsg}</span>}
-              </div>
-            </div>
+      <div className="flex flex-1">
+        {/* Sidebar (desktop) */}
+        <div className="hidden md:flex w-56 bg-white border-r border-gray-200 flex-col">
+          <div className="px-5 py-5 border-b border-gray-100">
+            <div className="font-bold text-gray-900">Admin Panel</div>
+            <div className="text-xs text-gray-400 mt-0.5">OpenBudget</div>
           </div>
-        )}
-
-        {page === 'password' && (
-          <div>
-            <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 24, color: '#0f172a' }}>Parol o'zgartirish</h2>
-            <div style={{ background: '#fff', borderRadius: 12, padding: 28, boxShadow: '0 1px 4px rgba(0,0,0,0.06)', maxWidth: 400 }}>
-              <div style={{ marginBottom: 16 }}>
-                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 6, color: '#374151' }}>Eski parol</label>
-                <input type="password" value={oldPw} onChange={e => setOldPw(e.target.value)}
-                  style={{ width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: 8, fontSize: 14, boxSizing: 'border-box' }} />
-              </div>
-              <div style={{ marginBottom: 20 }}>
-                <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 6, color: '#374151' }}>Yangi parol</label>
-                <input type="password" value={newPw} onChange={e => setNewPw(e.target.value)}
-                  style={{ width: '100%', padding: '10px 12px', border: '1px solid #d1d5db', borderRadius: 8, fontSize: 14, boxSizing: 'border-box' }} />
-              </div>
-              {pwMsg && <p style={{ color: pwMsg.includes('Xato') ? '#ef4444' : '#16a34a', fontSize: 13, marginBottom: 12 }}>{pwMsg}</p>}
-              <button onClick={changePassword} style={{ padding: '10px 24px', background: '#22c55e', color: '#fff', border: 'none', borderRadius: 8, fontWeight: 600, fontSize: 14, cursor: 'pointer' }}>
-                O'zgartirish
+          <nav className="flex-1 p-3">
+            {nav.map(n => (
+              <button key={n.id} onClick={() => navigate(n.id)}
+                className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium mb-1 ${page === n.id ? 'bg-green-50 text-green-700' : 'text-gray-700 hover:bg-gray-50'}`}>
+                {n.label}
               </button>
-            </div>
+            ))}
+          </nav>
+          <div className="p-3">
+            <button onClick={onLogout} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-500 hover:bg-gray-50">
+              Chiqish
+            </button>
           </div>
-        )}
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 p-4 md:p-8 max-w-2xl">
+          {page === 'settings' && settings && (
+            <div>
+              <h2 className="text-lg font-bold text-gray-900 mb-5">Sozlamalar</h2>
+              <div className="bg-white rounded-xl p-5 shadow-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    { label: "Ovoz narxi (so'm)", key: 'voteAmount', type: 'number' },
+                    { label: "Bonus miqdori (so'm)", key: 'bonusAmount', type: 'number' },
+                    { label: 'Bonus uchun min. ovoz', key: 'bonusMinVotes', type: 'number' },
+                    { label: 'Grand sovrin', key: 'grandPrize', type: 'text' },
+                    { label: 'Hero variant (1 yoki 2)', key: 'heroVariant', type: 'number' },
+                  ].map(f => (
+                    <div key={f.key}>
+                      <label className={labelCls}>{f.label}</label>
+                      <input type={f.type} value={settings[f.key] ?? ''} onChange={e => setSettings(s => ({ ...s, [f.key]: e.target.value }))} className={inputCls} />
+                    </div>
+                  ))}
+                  <div className="sm:col-span-2">
+                    <label className={labelCls}>Telegram link</label>
+                    <input type="url" value={settings.telegramLink ?? ''} onChange={e => setSettings(s => ({ ...s, telegramLink: e.target.value }))} className={inputCls} />
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 mt-5">
+                  <button onClick={saveSettings} disabled={saving}
+                    className="px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold text-sm transition-colors">
+                    {saving ? 'Saqlanmoqda...' : 'Saqlash'}
+                  </button>
+                  {saveMsg && <span className="text-green-600 text-sm">{saveMsg}</span>}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {page === 'password' && (
+            <div>
+              <h2 className="text-lg font-bold text-gray-900 mb-5">Parol o'zgartirish</h2>
+              <div className="bg-white rounded-xl p-5 shadow-sm max-w-sm">
+                <div className="mb-4">
+                  <label className={labelCls}>Eski parol</label>
+                  <input type="password" value={oldPw} onChange={e => setOldPw(e.target.value)} className={inputCls} />
+                </div>
+                <div className="mb-5">
+                  <label className={labelCls}>Yangi parol</label>
+                  <input type="password" value={newPw} onChange={e => setNewPw(e.target.value)} className={inputCls} />
+                </div>
+                {pwMsg && <p className={`text-sm mb-3 ${pwMsg.includes('Xato') ? 'text-red-500' : 'text-green-600'}`}>{pwMsg}</p>}
+                <button onClick={changePassword}
+                  className="px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold text-sm transition-colors">
+                  O'zgartirish
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
