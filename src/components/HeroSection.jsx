@@ -21,18 +21,38 @@ const fadeUp = {
   }),
 }
 
-const PAYMENT_FEED = [
-  { id: 1,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-emerald-600' },
-  { id: 2,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-violet-600'  },
-  { id: 3,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-sky-600'     },
-  { id: 4,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-rose-600'    },
-  { id: 5,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-amber-600'   },
-  { id: 6,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-fuchsia-600' },
-  { id: 7,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-indigo-600'  },
-  { id: 8,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-teal-600'    },
-  { id: 9,  name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-orange-600'  },
-  { id: 10, name: 'Shahriyor',  initials: 'Sh', amount: '5 000',  color: 'bg-cyan-600'    },
+const NAMES = [
+  ['Shahriyor','Sh'],['Jasur','Ja'],['Dilnoza','Di'],['Bobur','Bo'],['Malika','Ma'],
+  ['Sardor','Sa'],['Zulfiya','Zu'],['Ulugbek','Ul'],['Nilufar','Ni'],['Behruz','Be'],
+  ['Kamola','Ka'],['Mirzo','Mi'],['Ozoda','Oz'],['Sherzod','Sh'],['Gulnora','Gu'],
+  ['Doniyor','Do'],['Feruza','Fe'],['Sanjar','Sa'],['Barno','Ba'],['Otabek','Ot'],
+  ['Mohira','Mo'],['Eldor','El'],['Ziyoda','Zi'],['Firdavs','Fi'],['Shahnoza','Sh'],
+  ['Akbar','Ak'],['Lobar','Lo'],['Nodir','No'],['Yulduz','Yu'],['Muzaffar','Mu'],
+  ['Sabohat','Sa'],['Temur','Te'],['Maftuna','Mf'],['Alisher','Al'],['Xurshid','Xh'],
+  ['Nargiza','Na'],['Ravshan','Ra'],['Dilfuza','Dl'],['Jamshid','Jm'],['Umida','Um'],
+  ['Sarvarbek','Sv'],['Munira','Mn'],['Ilhom','Il'],['Shoira','Sh'],['Anvar','An'],
+  ['Nafisa','Nf'],['Mansur','Ms'],['Hilola','Hi'],['Erkin','Er'],['Zuhra','Zh'],
+  ['Bekzod','Bk'],['Oydin','Oy'],['Husan','Hs'],['Gavhar','Gv'],['Ulmas','Ul'],
+  ['Shirin','Sh'],['Komiljon','Ko'],['Manzura','Mz'],['Davron','Dv'],['Hulkar','Hk'],
+  ['Laziz','Lz'],['Sevinch','Se'],['Murod','Mr'],['Iroda','Ir'],['Nurbek','Nu'],
+  ['Mahliyo','Mh'],['Zafar','Zf'],['Sitora','St'],['Bahodir','Bh'],['Farzona','Fr'],
+  ['Hamid','Hm'],['Dildora','Dd'],['Sarvar','Sr'],['Muxlisa','Mx'],['Abror','Ab'],
+  ['Xilola','Xl'],['Nuriddin','Nd'],['Charos','Ch'],['Shamsiddin','Sm'],['Aziza','Az'],
+  ['Ulugbek','Ub'],['Nasiba','Ns'],['Tohir','Th'],['Lola','Ll'],['Vohid','Vo'],
+  ['Sanam','Sn'],['Mirkomil','Mk'],['Barcha','Bc'],['Shodmon','Sd'],['Muazzam','Mw'],
+  ['Ismoil','Is'],['Tabassum','Tb'],['Behzod','Bz'],['Robiya','Rb'],['Qodir','Qd'],
+  ['Mohlaroyim','Ml'],['Asliddin','As'],['Nozima','Nz'],['Hamza','Hz'],['Sarvinoz','Sv'],
 ]
+const COLORS = ['bg-emerald-600','bg-violet-600','bg-sky-600','bg-rose-600','bg-amber-600','bg-fuchsia-600','bg-indigo-600','bg-teal-600','bg-orange-600','bg-cyan-600','bg-green-600','bg-blue-600','bg-red-600','bg-yellow-600','bg-pink-600']
+const AMOUNTS = ['5 000','10 000','15 000','20 000','25 000','30 000']
+
+const PAYMENT_FEED = NAMES.map(([name, initials], i) => ({
+  id: i + 1,
+  name,
+  initials,
+  amount: AMOUNTS[i % AMOUNTS.length],
+  color: COLORS[i % COLORS.length],
+}))
 
 const INTERVALS = [2600, 3100, 2400, 3400, 2900, 2700, 3200]
 let intervalIdx = 0
