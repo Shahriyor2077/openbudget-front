@@ -29,8 +29,6 @@ const steps = [
   },
 ]
 
-const connectorColors = ['from-brand-blue/50 to-brand-green/50', 'from-brand-green/50 to-brand-gold/50']
-
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-24 relative">
@@ -51,15 +49,7 @@ export default function HowItWorks() {
         </motion.div>
 
         <div className="relative">
-          <div className="hidden lg:flex absolute top-16 left-0 right-0 items-center px-[16.67%]">
-            {connectorColors.map((gradient, i) => (
-              <div key={i} className="flex-1 flex items-center">
-                <div className={`flex-1 h-px bg-gradient-to-r ${gradient} opacity-50 dark:opacity-100`} />
-              </div>
-            ))}
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-12 items-stretch">
+<div className="grid md:grid-cols-3 gap-8 lg:gap-12 items-stretch">
             {steps.map((step, i) => (
               <motion.div
                 key={i}
