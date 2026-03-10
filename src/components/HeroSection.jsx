@@ -44,7 +44,7 @@ const NAMES = [
   ['Mohlaroyim','Ml'],['Asliddin','As'],['Nozima','Nz'],['Hamza','Hz'],['Sarvinoz','Sv'],
 ]
 const COLORS = ['bg-emerald-600','bg-violet-600','bg-sky-600','bg-rose-600','bg-amber-600','bg-fuchsia-600','bg-indigo-600','bg-teal-600','bg-orange-600','bg-cyan-600','bg-green-600','bg-blue-600','bg-red-600','bg-yellow-600','bg-pink-600']
-const AMOUNTS = ['5 000','10 000','15 000','20 000','25 000','30 000']
+const AMOUNTS = ['20 000','25 000','30 000','35 000','40 000','50 000']
 
 const PAYMENT_FEED = NAMES.map(([name, initials], i) => ({
   id: i + 1,
