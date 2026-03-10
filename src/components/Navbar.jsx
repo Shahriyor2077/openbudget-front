@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Send } from 'lucide-react'
 import { useConfig } from '../context/ConfigContext'
+import logo from '../assets/logo.png'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -20,10 +21,8 @@ export default function Navbar() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-brand-green/20 border border-brand-green/30 flex items-center justify-center">
-            <span className="text-brand-green font-black text-sm">V</span>
-          </div>
-          <span className="font-bold text-gray-900 dark:text-white">Open</span>
+          <img src={logo} alt="Logo" className="h-12 w-auto" />
+          <span className="font-bold text-gray-900 dark:text-white">Milliy jamoasi</span>
         </div>
 
         <nav className="hidden md:flex items-center gap-8 text-sm text-gray-500 dark:text-slate-400">
