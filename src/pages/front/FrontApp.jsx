@@ -40,21 +40,21 @@ export default function FrontApp() {
             <span className="text-blue-400">100 000 so'm</span> gacha!
           </motion.h1>
 
+          {/* Pul rasmi */}
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="visible" custom={1}
+            className="mb-7"
+          >
+            <img src={pul} alt="pul" className="w-72 h-auto rounded-2xl object-contain mx-auto shadow-2xl shadow-black/30" />
+          </motion.div>
+
           {/* Subtitle */}
           <motion.p
-            variants={fadeUp} initial="hidden" animate="visible" custom={1}
+            variants={fadeUp} initial="hidden" animate="visible" custom={2}
             className="text-lg text-gray-400 mb-7"
           >
             Har bitta ovoz uchun 100.000 so'm gacha ishlash imkoni
           </motion.p>
-
-          {/* Pul rasmi */}
-          <motion.div
-            variants={fadeUp} initial="hidden" animate="visible" custom={2}
-            className="mb-8"
-          >
-            <img src={pul} alt="pul" className="w-72 h-auto rounded-2xl object-contain mx-auto shadow-2xl shadow-black/30" />
-          </motion.div>
 
           {/* Button */}
           <motion.div
