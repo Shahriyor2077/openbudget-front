@@ -40,8 +40,8 @@ export const HERO_VARIANTS = {
     headline: `Har bitta ovoz\nuchun ${VOTE_AMOUNT} so'm!`,
     subheadline: "Telegram'da ovoz bering va pul mukofotini oling.",
     extra: "Start bosing va ovoz berishni boshlang!",
-    cta: "Ovoz berish",
-    secondaryCta: "Qanday ishlaydi?",
+    cta: "Pul ishlash",
+    secondaryCta: null,
     bonus: BONUS_TEXT,
   },
 }
