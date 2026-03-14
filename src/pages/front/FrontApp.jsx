@@ -34,7 +34,7 @@ export default function FrontApp() {
           {/* Title */}
           <motion.h1
             variants={fadeUp} initial="hidden" animate="visible" custom={0}
-            className="text-3xl sm:text-4xl font-black text-white leading-tight mb-3"
+            className="text-3xl sm:text-4xl font-black text-white leading-tight mb-6"
           >
             Har bitta ovoz uchun<br />
             <span className="text-blue-400">100 000 so'm</span> gacha!
@@ -43,7 +43,7 @@ export default function FrontApp() {
           {/* Subtitle */}
           <motion.p
             variants={fadeUp} initial="hidden" animate="visible" custom={1}
-            className="text-lg text-gray-400 mb-6"
+            className="text-lg text-gray-400 mb-7"
           >
             Har bitta ovoz uchun 100.000 so'm gacha ishlash imkoni
           </motion.p>
@@ -84,7 +84,7 @@ export default function FrontApp() {
 
           <motion.p
             variants={fadeUp} initial="hidden" animate="visible" custom={4}
-            className="text-xs text-gray-600 mt-8"
+            className="text-xs text-gray-600 mt-6"
           >
             To'lovlar Telegram bot orqali amalga oshiriladi
           </motion.p>
