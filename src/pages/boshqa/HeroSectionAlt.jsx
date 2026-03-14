@@ -122,7 +122,7 @@ export default function HeroSectionAlt() {
               custom={1}
               className="text-xl text-gray-500 dark:text-slate-400 mb-6 leading-relaxed"
             >
-              {variant.subheadline}
+              Aldanib qolmang to'lovlarni faqat bizni bot qilmoqda
             </motion.p>
 
             <motion.div

@@ -245,7 +245,7 @@ export default function HeroSection() {
               custom={1}
               className="text-xl text-gray-500 dark:text-slate-400 mb-6 leading-relaxed"
             >
-              {variant.subheadline}
+              Faqat biz har bir ovoz uchun haqiqiy to'lov qilamiz.
             </motion.p>
 
             <motion.div
