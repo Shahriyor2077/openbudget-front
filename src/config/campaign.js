@@ -30,7 +30,7 @@ export const STATS = [
 export const HERO_VARIANTS = {
   1: {
     headline: "Ovoz bering —\npul ishlab oling!",
-    subheadline: "Faqat biz har bir ovoz uchun haqiqiy to'lov qilamiz.",
+    subheadline: "Aldanib qolmang to'lovlarni faqat bizni bot qilmoqda",
     extra: "Telegram'da hoziroq ovoz bering.",
     cta: "Ovoz berish",
     secondaryCta: null,
@@ -38,7 +38,7 @@ export const HERO_VARIANTS = {
   },
   2: {
     headline: `Har bitta ovoz\nuchun ${VOTE_AMOUNT} so'm!`,
-    subheadline: "Telegram'da ovoz bering va pul mukofotini oling.",
+    subheadline: "Aldanib qolmang to'lovlarni faqat bizni bot qilmoqda",
     extra: "Start bosing va ovoz berishni boshlang!",
     cta: "Pul ishlash",
     secondaryCta: null,

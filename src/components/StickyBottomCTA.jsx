@@ -30,10 +30,10 @@ export default function StickyBottomCTA() {
           href={telegramLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary px-5 py-3 text-sm flex-shrink-0"
+          className="btn-primary px-10 py-5 text-2xl flex-shrink-0"
         >
-          <Send className="w-4 h-4" />
-          Ovoz berish
+          <Send className="w-6 h-6" />
+          Pul ishlash
         </a>
       </div>
     </div>

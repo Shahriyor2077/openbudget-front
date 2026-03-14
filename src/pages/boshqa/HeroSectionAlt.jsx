@@ -136,9 +136,9 @@ export default function HeroSectionAlt() {
                 href={telegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-lg px-8 py-4"
+                className="btn-primary text-3xl px-14 py-7"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-6 h-6" />
                 {variant.cta}
                 <ArrowRight className="w-5 h-5" />
               </a>
