@@ -11,6 +11,7 @@ import Footer from './components/Footer'
 import StickyBottomCTA from './components/StickyBottomCTA'
 import Admin from './pages/admin'
 import BoshqaApp from './pages/boshqa/BoshqaApp'
+import FrontApp from './pages/front/FrontApp'
 
 function Landing() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
       <Routes>
         <Route path="/admin/*" element={<Admin />} />
         <Route path="/open/*" element={<ConfigProvider><BoshqaApp /></ConfigProvider>} />
+        <Route path="/front/*" element={<FrontApp />} />
         <Route path="/*" element={<Landing />} />
       </Routes>
     </BrowserRouter>
