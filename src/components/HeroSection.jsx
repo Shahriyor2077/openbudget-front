@@ -259,7 +259,7 @@ export default function HeroSection() {
                 href={telegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-lg px-8 py-4"
+                className="btn-primary text-xl px-10 py-5"
               >
                 <Send className="w-5 h-5" />
                 {variant.cta}
