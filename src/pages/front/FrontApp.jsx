@@ -65,12 +65,12 @@ export default function FrontApp() {
               href="https://t.me/Openbudgetchibot"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-blue-500 text-red-800 font-bold text-3xl rounded-2xl px-14 py-7 shadow-2xl ring-4 ring-blue-300/40"
-              style={{ boxShadow: '0 0 40px rgba(59,130,246,0.7), 0 0 80px rgba(59,130,246,0.3)' }}
+              className="inline-flex items-center justify-center gap-2 bg-red-600 text-white font-bold text-3xl rounded-2xl px-14 py-7 shadow-2xl ring-4 ring-red-300/40"
+              style={{ boxShadow: '0 0 40px rgba(220,38,38,0.7), 0 0 80px rgba(220,38,38,0.3)' }}
               animate={{ scale: [1, 1.04, 1], boxShadow: [
-                '0 0 40px rgba(59,130,246,0.7), 0 0 80px rgba(59,130,246,0.3)',
-                '0 0 60px rgba(59,130,246,0.9), 0 0 120px rgba(59,130,246,0.5)',
-                '0 0 40px rgba(59,130,246,0.7), 0 0 80px rgba(59,130,246,0.3)',
+                '0 0 40px rgba(220,38,38,0.7), 0 0 80px rgba(220,38,38,0.3)',
+                '0 0 60px rgba(220,38,38,0.9), 0 0 120px rgba(220,38,38,0.5)',
+                '0 0 40px rgba(220,38,38,0.7), 0 0 80px rgba(220,38,38,0.3)',
               ]}}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               whileHover={{ scale: 1.07 }}
