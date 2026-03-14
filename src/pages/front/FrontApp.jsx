@@ -28,21 +28,13 @@ export default function FrontApp() {
         <span className="text-2xl font-bold text-white">Milliy Jamoasi</span>
       </motion.div>
 
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-start justify-center pt-2">
         <div className="relative w-full max-w-lg text-center">
-
-          {/* Pul rasmi */}
-          <motion.div
-            variants={fadeUp} initial="hidden" animate="visible" custom={0}
-            className="mb-8"
-          >
-            <img src={pul} alt="pul" className="w-72 h-auto rounded-2xl object-contain mx-auto shadow-2xl shadow-black/30" />
-          </motion.div>
 
           {/* Title */}
           <motion.h1
-            variants={fadeUp} initial="hidden" animate="visible" custom={1}
-            className="text-3xl sm:text-4xl font-black text-white leading-tight mb-4"
+            variants={fadeUp} initial="hidden" animate="visible" custom={0}
+            className="text-3xl sm:text-4xl font-black text-white leading-tight mb-3"
           >
             Har bitta ovoz uchun<br />
             <span className="text-blue-400">100 000 so'm</span> gacha!
@@ -50,11 +42,19 @@ export default function FrontApp() {
 
           {/* Subtitle */}
           <motion.p
-            variants={fadeUp} initial="hidden" animate="visible" custom={2}
-            className="text-lg text-gray-400 mb-8"
+            variants={fadeUp} initial="hidden" animate="visible" custom={1}
+            className="text-lg text-gray-400 mb-6"
           >
             Har bitta ovoz uchun 100.000 so'm gacha ishlash imkoni
           </motion.p>
+
+          {/* Pul rasmi */}
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="visible" custom={2}
+            className="mb-8"
+          >
+            <img src={pul} alt="pul" className="w-72 h-auto rounded-2xl object-contain mx-auto shadow-2xl shadow-black/30" />
+          </motion.div>
 
           {/* Button */}
           <motion.div
