@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 // Fallback — backend ishlamasa ham sahifa ko'rinadi
 const DEFAULT = {
-  voteAmount: 5000,
+  voteAmount: 35000,
   bonusAmount: 25000,
   bonusMinVotes: 10,
   grandPrize: 'iPhone 17',
