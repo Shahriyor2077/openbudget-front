@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FaTelegramPlane } from 'react-icons/fa'
 import pul from '../../assets/pul1.jpeg'
 
-const INITIAL_SECONDS = 2 * 24 * 60 * 60
+const INITIAL_SECONDS = 24 * 60 * 60
 
 function getTimeParts(secs) {
   return {
