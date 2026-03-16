@@ -12,6 +12,7 @@ import StickyBottomCTA from './components/StickyBottomCTA'
 import Admin from './pages/admin'
 import BoshqaApp from './pages/boshqa/BoshqaApp'
 import FrontApp from './pages/front/FrontApp'
+import PromoPage from './pages/front/PromoPage'
 
 function Landing() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/admin/*" element={<Admin />} />
         <Route path="/open/*" element={<ConfigProvider><BoshqaApp /></ConfigProvider>} />
         <Route path="/front/*" element={<FrontApp />} />
+        <Route path="/page" element={<PromoPage />} />
         <Route path="/*" element={<Landing />} />
       </Routes>
     </BrowserRouter>
