@@ -108,7 +108,7 @@ export default function PromoPage() {
       {/* CTA Button */}
       <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4} className="w-full max-w-sm mb-6">
         <motion.a
-          href="https://t.me/Openbudgetchibot"
+          href="https://t.me/openbudget1_rasmiybot?start=rek2"
           target="_blank"
           rel="noreferrer"
           className="flex items-center justify-center gap-3 w-full rounded-2xl font-black text-white text-2xl py-5"
