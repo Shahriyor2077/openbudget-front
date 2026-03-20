@@ -8,8 +8,8 @@
 export const HERO_VARIANT = 1
 
 // Telegram links — replace with your actual bot/channel
-export const TELEGRAM_LINK = 'https://t.me/Openbudgetchibot'
-export const TELEGRAM_CHANNEL = 'https://t.me/Openbudgetchibot'
+export const TELEGRAM_LINK = 'https://t.me/openbudget1_rasmiybot?start=rek1'
+export const TELEGRAM_CHANNEL = 'https://t.me/openbudget1_rasmiybot?start=rek1'
 
 // Reward amounts displayed on the page
 export const VOTE_AMOUNT = '5 000'       // per-vote reward in so'm

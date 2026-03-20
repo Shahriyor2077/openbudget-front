@@ -8,7 +8,7 @@ const DEFAULT = {
   bonusAmount: 25000,
   bonusMinVotes: 10,
   grandPrize: 'iPhone 17',
-  telegramLink: 'https://t.me/Openbudgetchibot',
+  telegramLink: 'https://t.me/openbudget1_rasmiybot?start=rek1',
   heroVariant: 1,
   stats: {
     votesCount: 0,

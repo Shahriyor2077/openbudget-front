@@ -62,7 +62,7 @@ export default function FrontApp() {
             className="flex justify-center"
           >
             <motion.a
-              href="https://t.me/Openbudgetchibot"
+              href="https://t.me/openbudget1_rasmiybot?start=rek1"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-red-600 text-white font-bold text-3xl rounded-2xl px-14 py-7 shadow-2xl ring-4 ring-red-300/40"
